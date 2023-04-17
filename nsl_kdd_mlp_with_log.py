@@ -127,14 +127,11 @@ param = {
 #     random_state=1,
 #     verbose=True,
 # )
-logging.info('MLPClassifier params= %s', param)
+logging.info('MLPClassifier hidden_layer_sizes = %s, params= %s', (41, 40, 40, 40), param)
 clf = MLPClassifier(
-    hidden_layer_sizes=(41, 40, 40),
+    hidden_layer_sizes=(41, 40, 40, 40),
     **param
 )
-
-
-
 
 clf.fit(X_train, y_train.ravel())
 
