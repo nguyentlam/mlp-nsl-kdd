@@ -76,7 +76,7 @@ print('y_test[0:2]===', y_test[0:2])
 # clf = LogisticRegression(penalty=None, C=1e-6, solver='saga', multi_class='ovr', max_iter = 100)
 # clf = DecisionTreeClassifier()
 clf = MLPClassifier(
-    hidden_layer_sizes=(41, 40, 40),
+    hidden_layer_sizes=(41, 20, 40),
     solver="sgd",
     activation='relu',
     alpha=1e-5,

@@ -129,7 +129,7 @@ param = {
 # )
 logging.info('MLPClassifier hidden_layer_sizes = %s, params= %s', (41, 40, 40, 40), param)
 clf = MLPClassifier(
-    hidden_layer_sizes=(41, 40, 40, 40),
+    hidden_layer_sizes=(41, 20, 40),
     **param
 )
 
