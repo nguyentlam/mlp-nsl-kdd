@@ -40,23 +40,23 @@ categorical_x_columns = np.array([1, 2, 3])
 numberic_x_columns = np.delete(x_columns, categorical_x_columns)
 print('numberic_x_columns', numberic_x_columns)
 x_ct = ColumnTransformer(transformers = [("onehot", OneHotEncoder(handle_unknown='ignore', sparse_output=False), categorical_x_columns),
-                                         ('normalize', Normalizer(norm='l2'), numberic_x_columns)], remainder = 'passthrough')
+                                         ('normalize', Normalizer(norm='max'), numberic_x_columns)], remainder = 'passthrough')
 
-x_ct.fit(np.concatenate((X_train_raw, X_test_raw), axis = 0))
+x_ct.fit(X_train_raw)
 X_train = x_ct.transform(X_train_raw)
-#X_train = X_train.astype('float')
+X_train = X_train.astype('float')
 print('X_train[0:3]', X_train[0:3])
 print('len(X_train[0])', len(X_train[0]))
 
 X_test = x_ct.transform(X_test_raw)
-#X_train = X_train.astype('float')
+X_test = X_test.astype('float')
 print('X_train[0:3]', X_train[0:3])
 print('len(X_train[0])', len(X_train[0]))
 
 
 def preprocess_label(y_data):
     print(y_data[0])
-    return np.array(list(map(lambda x : 0 if x[0] == 'normal' else 1, y_data))).astype(np.float32)
+    return np.array(list(map(lambda x : 0 if x[0] == 'normal' else 1, y_data)))
 
 y_train = preprocess_label(y_train_raw)
 y_train = y_train.astype('float')
